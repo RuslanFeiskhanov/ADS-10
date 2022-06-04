@@ -38,6 +38,8 @@ class Tree {
     std::vector<std::string> perm;
     void SetNode(Node* root, std::vector<char> Numbs) {
     if (!Numbs.size()) {
+     return;
+    }
         if (root->value != '/') {
             std::vector<char>::iterator v = Numbs.begin();
             while (v != Numbs.end()) {
@@ -48,7 +50,6 @@ class Tree {
                 v++;
             }
         }
-    }
     int i = 0;
         while (i < Numbs.size()) {
             root->current.push_back(new Node);
@@ -64,12 +65,12 @@ class Tree {
 
     void Prop(Node* root, std::string s = "") {
         if (!root->current.size()) {
-            s += root->value;
+            s = s + root->value;
             perm.push_back(s);
             return;
         }
         if (root->value != '/') {
-            s += root->value;
+            s = s + root->value;
         }
         int i = 0;
         while (i < root->current.size()) {
