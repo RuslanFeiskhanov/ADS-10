@@ -5,8 +5,6 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 class Tree {
  public:
     explicit Tree(std::vector<char> x) {
@@ -30,14 +28,21 @@ class Tree {
         }
       return perm;
     }
-   
+
+ private:
+    struct Node {
+        char value;
+        std::vector<Node*> current;
+    };
+    Node* root;
+    std::vector<string> perm;
     void SetNode(Node* root, std::vector<char> Numbs) {
-    if (Numbs.size() != nullptr) {
+    if (!Numbs.size()) {
         if (root->value != '/') {
             std::vector<char>::iterator v = Numbs.begin();
             while (v != Numbs.end()) {
                 if (*v == root->value) {
-                    Numbs.erase(x);
+                    Numbs.erase(v);
                     break;
                 }
                 v++;
@@ -47,7 +52,7 @@ class Tree {
     int i = 0;
         while (i < Numbs.size()) {
             root->current.push_back(new Node);
-            i++
+            i++;
         }
         for (int i = 0; i < root->current.size(); ++i) {
             root->current[i]->value = Numbs[i];
@@ -58,7 +63,7 @@ class Tree {
     }
 
     void Prop(Node* root, std::string s = "") {
-        if (root->current.size() != nullptr) {
+        if (!root->current.size()) {
             s += root->value;
             perm.push_back(s);
             return;
@@ -72,14 +77,6 @@ class Tree {
             i++;
         }
     }
-
- private:
-    struct Node {
-        char value;
-        std::vector<Node*> current;
-    };
-    Node* root;
-    std::vector<string> perm;
 };
 
 #endif  // INCLUDE_TREE_H_
