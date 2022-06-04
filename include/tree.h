@@ -8,9 +8,8 @@
 using namespace std;
 
 class Tree {
-
  public:
-    explicit Tree( vector<char> x) {
+    explicit Tree(std::vector<char> x) {
         root = new Node;
         root->value = '/';
         SetNode(root, x);
@@ -21,22 +20,22 @@ class Tree {
             return "";
         }
     return perm[i];
-    } 
+    }
 
-    vector<char> GetPermutation(const Tree& tree, int n) {
-        string res = tree[n-1];
-        vector<char> perm;
+    std::vector<char> GetPermutation(const Tree& tree, int n) {
+        std::string res = tree[n-1];
+        std::vector<char> perm;
         for (int i = 0; i < res.length(); ++i) {
             perm.push_back(res[i]);
         }
       return perm;
     }
-    
-    void SetNode(Node* root, vector<char> Numbs) {
+   
+    void SetNode(Node* root, std::vector<char> Numbs) {
     if (Numbs.size() != nullptr) {
         if (root->value != '/') {
-            vector<char>::iterator v = Numbs.begin();
-            while(v != Numbs.end()) {
+            std::vector<char>::iterator v = Numbs.begin();
+            while (v != Numbs.end()) {
                 if (*v == root->value) {
                     Numbs.erase(x);
                     break;
@@ -58,7 +57,7 @@ class Tree {
         }
     }
 
-    void Prop(Node* root, string s = "") {
+    void Prop(Node* root, std::string s = "") {
         if (root->current.size() != nullptr) {
             s += root->value;
             perm.push_back(s);
@@ -73,13 +72,14 @@ class Tree {
             i++;
         }
     }
+
  private:
     struct Node {
         char value;
-        vector<Node*> current;
+        std::vector<Node*> current;
     };
-    
     Node* root;
-    vector<string> perm;
+    std::vector<string> perm;
 };
+
 #endif  // INCLUDE_TREE_H_
