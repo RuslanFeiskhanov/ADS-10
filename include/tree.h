@@ -13,7 +13,7 @@ class Tree {
         SetNode(root, x);
         Prop(root);
     }
-    string operator[](int i) const {
+    std::string operator[](int i) const {
         if (i >= perm.size()) {
             return "";
         }
@@ -35,7 +35,7 @@ class Tree {
         std::vector<Node*> current;
     };
     Node* root;
-    std::vector<string> perm;
+    std::vector<std::string> perm;
     void SetNode(Node* root, std::vector<char> Numbs) {
     if (!Numbs.size()) {
         if (root->value != '/') {
