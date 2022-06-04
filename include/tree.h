@@ -82,5 +82,4 @@ class Tree {
     Node* root;
     vector<string> perm;
 };
-
 #endif  // INCLUDE_TREE_H_
